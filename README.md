@@ -16,7 +16,7 @@ This exercise is designed to examine your ability to;
 
 ## Tasks
 
-* Using Magento 2.4.6 Community (https://github.com/magento/magento2/releases/tag/2.4.6-p7) as your framework, create a new Magento 2 module named "PromotionalProducts" with the following components
+* Using Magento 2.4.6 Community (https://github.com/magento/magento2/releases/tag/2.4.6-p8) as your framework, create a new Magento 2 module named "PromotionalProducts" with the following components
 
 
 #### Admin
