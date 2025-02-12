@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="HarveyNorman_PromotionalProducts::promotional"
+             title="Harvey Norman"
+             translate="title"
+             module="HarveyNorman_PromotionalProducts"
+             parent="Magento_Backend::marketing"
+             sortOrder="15"
+             resource="Magento_CatalogRule::promo" />
+        <add id="HarveyNorman_PromotionalProducts::promotional_products"
+             title="Promotional Products"
+             translate="title"
+             sortOrder="10"
+             module="HarveyNorman_PromotionalProducts"
+             parent="HarveyNorman_PromotionalProducts::promotional"
+             action="promotional/product/"
+             dependsOnModule="Magento_Catalog"
+             resource="HarveyNorman_PromotionalProducts::promotional_products" />
+    </menu>
+</config>
