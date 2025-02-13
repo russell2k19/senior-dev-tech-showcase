@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="promotional_promo" resource="default" engine="innodb" comment="Promo">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Name"/>
+        <column xsi:type="varchar" name="type" nullable="false" length="40" comment="Type"/>
+        <column xsi:type="float" name="value" unsigned="true" nullable="true" comment="Value"/>
+        <column xsi:type="timestamp" name="start_date" comment="Start Date"/>
+        <column xsi:type="timestamp" name="end_date" comment="End Date"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="24" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="promotional_promo_product" resource="default" engine="innodb" comment="Promo Product">
+        <column xsi:type="int" name="row_id" unsigned="true" nullable="false" identity="true" comment="Row Id"/>
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" comment="Promo Id"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Product Id"/>
+        <column xsi:type="int" name="is_active" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is active"/>
+        <column xsi:type="int" name="sort_order" padding="11" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Sort order"/>
+        <index referenceId="PROMO_PROMO_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+        <index referenceId="PROMO_PRODUCT_ID" indexType="btree">
+            <column name="product_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="PROMOTIONAL_PROMO_PRD_PRD_ID_CAT_PRD_ENTT_ENTT_ID"
+                    table="promotional_promo_product" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PROMOTIONAL_PROMO_PRODUCT_PROMO_ID_PROMOTIONAL_PROMO_PROMO_ID"
+                    table="promotional_promo_product" column="id" referenceTable="promotional_promo"
+                    referenceColumn="id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="row_id"/>
+        </constraint>
+    </table>
+</schema>

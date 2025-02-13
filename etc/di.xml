@@ -6,10 +6,41 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="HarveyNorman\PromotionalProducts\Api\Data\PromoInterface" type="HarveyNorman\PromotionalProducts\Model\Promo" />
+    <preference for="HarveyNorman\PromotionalProducts\Api\PromoRepositoryInterface" type="HarveyNorman\PromotionalProducts\Model\PromoRepository" />
+    <preference for="HarveyNorman\PromotionalProducts\Api\Data\PromoSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="promotionalProductTrigger" xsi:type="object">HarveyNorman\PromotionalProducts\Console\Command\TriggerUpdates</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="HarveyNorman\PromotionalProducts\Api\Data\PromoInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">HarveyNorman\PromotionalProducts\Model\ResourceModel\Promo::DB_SCHEMA_TABLE_PROMO</item>
+                    <item name="identifierField" xsi:type="const">HarveyNorman\PromotionalProducts\Api\Data\PromoInterface::PROMO_ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="HarveyNorman\PromotionalProducts\Api\Data\PromoInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="addPromoToProduct" type="HarveyNorman\PromotionalProducts\Plugin\Catalog\Model\Product" />
+    </type>
+    <type name="Magento\AdvancedSearch\Model\Adapter\DataMapper\AdditionalFieldsProvider">
+        <arguments>
+            <argument name="fieldsProviders" xsi:type="array">
+                <item name="promoField" xsi:type="object">HarveyNorman\PromotionalProducts\Model\Adapter\BatchDataMapper\PromoDataProvider</item>
             </argument>
         </arguments>
     </type>

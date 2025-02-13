@@ -1,0 +1,34 @@
+{
+    "promotional_promo": {
+        "column": {
+            "id": true,
+            "name": true,
+            "type": true,
+            "value": true,
+            "start_date": true,
+            "end_date": true,
+            "status": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "promotional_promo_product": {
+        "column": {
+            "row_id": true,
+            "id": true,
+            "product_id": true,
+            "is_active": true,
+            "sort_order": true
+        },
+        "index": {
+            "PROMOTIONAL_PROMO_PRODUCT_ID": true,
+            "PROMOTIONAL_PROMO_PRODUCT_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PROMOTIONAL_PROMO_PRD_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true,
+            "PROMOTIONAL_PROMO_PRODUCT_ID_PROMOTIONAL_PROMO_ID": true,
+            "PRIMARY": true
+        }
+    }
+}

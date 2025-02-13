@@ -8,38 +8,39 @@ declare(strict_types=1);
 namespace HarveyNorman\PromotionalProducts\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Psr\Log\LoggerInterface;
 use HarveyNorman\PromotionalProducts\Model\Backend\Publisher;
+use HarveyNorman\PromotionalProducts\Helper\Data as ModuleHelper;
 
 class PromotionalProductQueueGenerator implements ObserverInterface
 {
-    /**
-     * @var TimezoneInterface
-     */
-    private $localeDate;
 
     /**
-     * @var LoggerInterface
-     */
-    private LoggerInterface $logger;
-
-    /**
-     * @var Publisher
+     * @var \HarveyNorman\PromotionalProducts\Model\Backend\Publisher
      */
     private Publisher $publisher;
 
     /**
-     * @param TimezoneInterface $localeDate
+     * @var \HarveyNorman\PromotionalProducts\Helper\Data
+     */
+    private ModuleHelper $helper;
+
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private LoggerInterface $logger;
+
+    /**
      * @param \HarveyNorman\PromotionalProducts\Model\Backend\Publisher $publisher
+     * @param \HarveyNorman\PromotionalProducts\Helper\Data $helper
      * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
-        TimezoneInterface $localeDate,
         Publisher $publisher,
+        ModuleHelper $helper,
         LoggerInterface $logger
     ) {
-        $this->localeDate = $localeDate;
+        $this->helper = $helper;
         $this->publisher = $publisher;
         $this->logger = $logger;
     }
@@ -52,31 +53,15 @@ class PromotionalProductQueueGenerator implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $this->logger->info(__METHOD__ . '::' . __LINE__);
         /** @var  $product \Magento\Catalog\Model\Product */
         $product = $observer->getEvent()->getProduct();
 
         if ($this->isPromotionalStartDateProvided($product)) {
-            $this->logger->info(__METHOD__ . '::' . __LINE__);
             $payload = $this->generatePayload($product);
             $this->publisher->publish($payload);
         }
 
         return $this;
-    }
-
-    /**
-     * Parse Promotional Data
-     *
-     * @param \Magento\Catalog\Model\Product $product
-     * @return string
-     */
-    protected function parsePromotionalData($product)
-    {
-        $data = 'dummy data';
-        /** @TODO Parse Promotional data from product */
-
-        return $data;
     }
 
     /**
@@ -87,9 +72,10 @@ class PromotionalProductQueueGenerator implements ObserverInterface
      */
     protected function isPromotionalStartDateProvided($product)
     {
-        /** @TODO logic to check if hn_promotional_start_date is atleast provided */
+        $searchHaystack = ['hn_promotion_start_date'=>''];
+        $arrVal = $this->helper->getAttrValByCode($product,$searchHaystack );
 
-        return true;
+        return (bool)strtotime($arrVal['hn_promotion_start_date']);
     }
 
     /**
@@ -100,9 +86,6 @@ class PromotionalProductQueueGenerator implements ObserverInterface
      */
     protected function generatePayload($product)
     {
-        $formattedPayload = $this->parsePromotionalData($product);
-        /** @TODO generate serialized Promotional Product data here */
-
-        return $formattedPayload;
+        return $this->helper->parsePromotionalData($product);
     }
 }

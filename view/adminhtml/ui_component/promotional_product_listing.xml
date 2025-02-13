@@ -8,13 +8,13 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">product_listing.product_listing_data_source</item>
+            <item name="provider" xsi:type="string">promotional_product_listing.product_listing_data_source</item>
         </item>
     </argument>
     <settings>
         <spinner>product_columns</spinner>
         <deps>
-            <dep>product_listing.product_listing_data_source</dep>
+            <dep>promotional_product_listing.product_listing_data_source</dep>
         </deps>
     </settings>
     <dataSource name="product_listing_data_source" component="Magento_Ui/js/grid/provider">
@@ -98,7 +98,7 @@
         <settings>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
-                    <item name="provider" xsi:type="string">product_listing.product_listing.product_columns.actions</item>
+                    <item name="provider" xsi:type="string">promotional_product_listing.promotional_product_listing.product_columns.actions</item>
                     <item name="target" xsi:type="string">applyAction</item>
                     <item name="params" xsi:type="array">
                         <item name="0" xsi:type="string">edit</item>

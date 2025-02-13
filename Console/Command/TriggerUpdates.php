@@ -59,7 +59,6 @@ class TriggerUpdates extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->logger->info(__METHOD__ . '::' . __LINE__);
         /** @TODO trigger Promotional Product Consumer */
         $output->writeln('<info>Promotional Products Updated successfully</info>');
         return Cli::RETURN_SUCCESS;

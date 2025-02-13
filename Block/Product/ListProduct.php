@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace HarveyNorman\PromotionalProducts\Block;
+namespace HarveyNorman\PromotionalProducts\Block\Product;
 
 use Magento\Catalog\Block\Product\ListProduct as OriginalClass;
 

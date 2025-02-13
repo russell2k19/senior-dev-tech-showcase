@@ -48,9 +48,17 @@
     <tr>
         <td>Magento Admin Panel</td>
         <td>Admin User</td>
+        <td>I want to create a new Promotion in Admin</td>
+        <td>When I navigate to Marketing -> Manage Promo in the admin</td>
+        <td>I will be able to create ad manage any Promotion with no issues 
+        </td>
+    </tr>
+    <tr>
+        <td>Magento Admin Panel</td>
+        <td>Admin User</td>
         <td>I want to set a Promotional Product in Admin</td>
-        <td>When I edit and save the Promotional Start Date of a product in the admin</td>
-        <td>I will find the newly created Promotional Product when I navigate to Marketing -> Promotional Products
+        <td>When I edit the product and select a promo from dropdown selector in the admin</td>
+        <td>I will find the newly created Promotional Product after the consumer process is completed 
         </td>
     </tr>
     <tr>
