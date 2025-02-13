@@ -111,7 +111,6 @@ class DataProvider extends AbstractDataProvider
         return $this->addCollectionFilters($collection);
     }
 
-
     /**
      * Add collection filters
      *

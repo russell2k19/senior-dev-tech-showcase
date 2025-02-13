@@ -12,7 +12,8 @@ use HarveyNorman\PromotionalProducts\Model\Config;
 use Psr\Log\LoggerInterface;
 
 /**
- * Publisher class .
+ * Publisher class for queueing of candidate promotional products
+ *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Publisher

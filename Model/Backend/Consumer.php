@@ -13,7 +13,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use HarveyNorman\PromotionalProducts\Model\Config;
 
 /**
- * Consumer class
+ * Consumer class for processing discount calculation and promotion period
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */

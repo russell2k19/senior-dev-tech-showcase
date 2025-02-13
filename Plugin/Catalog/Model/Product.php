@@ -30,7 +30,9 @@ class Product
     protected $promoRepository;
 
     /**
-     * @param \HarveyNorman\PromotionalProducts\Model\ResourceModel\PromoProduct\CollectionFactory $promoProductCollectionFactory
+     * Plugin Constructor
+     *
+     * @param CollectionFactory $promoProductCollectionFactory
      * @param \HarveyNorman\PromotionalProducts\Model\PromoRepository $promoRepository
      */
     public function __construct(
@@ -40,7 +42,6 @@ class Product
         $this->promoProductCollection = $promoProductCollectionFactory->create();
         $this->promoRepository = $promoRepository;
     }
-
 
     /**
      * Add Promo model to Product Data

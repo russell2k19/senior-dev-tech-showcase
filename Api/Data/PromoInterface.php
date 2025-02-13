@@ -21,34 +21,36 @@ interface PromoInterface
     public const PROMO_START = 'start_date';
     public const PROMO_END = 'end_date';
     public const PROMO_STATUS = 'status';
-
     public const PROMO_PRODUCTS = 'promotional_products';
     public const MAIN_TABLE = 'promotional_promo';
-
     public const DEFAULT_STATUS = 1;
-
     public const DEFAULT_SORT_ORDER = 10;
+    /**#@- */
 
     /**
      * Get Promo Id
+     *
      * @return int
      */
     public function getPromoId();
 
     /**
      * Set Promo Id
+     *
      * @return \HarveyNorman\PromotionalProducts\Api\Data\PromoInterface
      */
     public function setPromoId($promoId);
 
     /**
      * Get Promo Name
+     *
      * @return string
      */
     public function getPromoName();
 
     /**
      * Set Promo Name
+     *
      * @param $promoName
      * @return \HarveyNorman\PromotionalProducts\Api\Data\PromoInterface
      */

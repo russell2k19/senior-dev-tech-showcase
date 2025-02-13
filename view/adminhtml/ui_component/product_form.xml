@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="promos">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="label" xsi:type="string" translate="true">Promos</item>
+            <item name="sortOrder" xsi:type="number">100</item>
+            <item name="collapsible" xsi:type="boolean">true</item>
+            <item name="opened" xsi:type="boolean">true</item>
+        </item>
+    </argument>
+    <field name="promo">
+        <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">HarveyNorman\PromotionalProducts\Model\Promo\Source\Promo</item>
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">Promo</item>
+                <item name="formElement" xsi:type="string">select</item>
+                <item name="dataScope" xsi:type="string">data.promos.promo</item>
+                <item name="fit" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+    </field>
+    </fieldset>
+</form>

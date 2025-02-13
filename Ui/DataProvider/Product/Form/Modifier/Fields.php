@@ -10,6 +10,9 @@ namespace HarveyNorman\PromotionalProducts\Ui\DataProvider\Product\Form\Modifier
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 
+/**
+ * Ui Modifier component
+ */
 class Fields extends AbstractModifier
 {
     /**
@@ -18,7 +21,7 @@ class Fields extends AbstractModifier
     private $productRepository;
 
     /**
-     * Modifier constructor
+     * Ui Modifier constructor
      *
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
      */
@@ -44,7 +47,7 @@ class Fields extends AbstractModifier
                 }
                 $promo = $this->productRepository->getById($productId)->getPromo();
                 if ($promo) {
-                    $data[$key]['promo']['promo'] = $promo->getId();
+                    $data[$key]['promos']['promo'] = $promo->getId();
                 }
             }
         }

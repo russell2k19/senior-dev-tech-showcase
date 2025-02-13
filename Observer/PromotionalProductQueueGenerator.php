@@ -73,7 +73,7 @@ class PromotionalProductQueueGenerator implements ObserverInterface
     protected function isPromotionalStartDateProvided($product)
     {
         $searchHaystack = ['hn_promotion_start_date'=>''];
-        $arrVal = $this->helper->getAttrValByCode($product,$searchHaystack );
+        $arrVal = $this->helper->getAttrValByCode($product, $searchHaystack);
 
         return (bool)strtotime($arrVal['hn_promotion_start_date']);
     }

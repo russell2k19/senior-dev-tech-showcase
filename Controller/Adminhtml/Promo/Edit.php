@@ -41,6 +41,4 @@ class Edit extends Promo implements HttpGetActionInterface
 
         return $resultPage;
     }
-
-
 }

@@ -9,6 +9,20 @@
     <preference for="HarveyNorman\PromotionalProducts\Api\Data\PromoInterface" type="HarveyNorman\PromotionalProducts\Model\Promo" />
     <preference for="HarveyNorman\PromotionalProducts\Api\PromoRepositoryInterface" type="HarveyNorman\PromotionalProducts\Model\PromoRepository" />
     <preference for="HarveyNorman\PromotionalProducts\Api\Data\PromoSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="HarveyNormanPromoGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">HarveyNorman\PromotionalProducts\Model\ResourceModel\Brand\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">HarveyNormanPromoGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="promotional_promo_listing_data_source" xsi:type="string">HarveyNorman\PromotionalProducts\Model\ResourceModel\Promo\Grid\Collection</item>
+                <item name="promotional_promo_edit_tab_product_grid_data_source" xsi:type="string">HarveyNorman\PromotionalProducts\Model\ResourceModel\Promo\Product\Grid\DataProvider</item>
+            </argument>
+        </arguments>
+    </type>
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
